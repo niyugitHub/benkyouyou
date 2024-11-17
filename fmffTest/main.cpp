@@ -5,7 +5,7 @@
 
 namespace
 {
-	const char* const FILE_NAME = "fmfData/Test.fmf";
+	const char* const FILE_NAME = "fmfData/Test_2.fmf";
 }
 
 int main()
@@ -34,16 +34,19 @@ int main()
 	for (int i = 0; i < 20; i++)
 	{
 		char tmp;
+
 		//1バイトずつ読み込む(計20バイト読み込む)
 		ifs.read(&tmp, sizeof(char));
 	}
 
 	//データを読み込む(実際に読み込みたいデータ)
-	std::vector<char> data;
+	std::vector<unsigned __int8> data;
 	for (char i = 0; i < size - 20; i++)
 	{
-		char tmp;
+		unsigned __int8 tmp;
 		ifs.read((char*)&tmp, sizeof(char));
+
+		//値がマイナスの場合
 		data.push_back(tmp);
 	}
 
